@@ -1,16 +1,13 @@
 package com.api.tests;
 
+import static com.api.constant.Role.*;
 import static io.restassured.RestAssured.*;
 import static io.restassured.module.jsv.JsonSchemaValidator.*;
 import static org.hamcrest.Matchers.*;
 
 import org.testng.annotations.Test;
 
-import com.api.constant.Role;
-import com.api.utils.AuthTokenProvider;
-import com.api.utils.ConfigManager;
-
-import io.restassured.http.ContentType;
+import com.api.utils.SpecUtil;
 
 public class CountAPITest {
 	
@@ -19,20 +16,11 @@ public class CountAPITest {
 	public void verifyCountAPIResponse() {
 		
 		given()
-		.baseUri(ConfigManager.getProperty("BASE_URI"))
-		.and()
-		.accept(ContentType.JSON)
-		.header("Authorization", AuthTokenProvider.getToken(Role.FD))
-		.log().method()
-		.log().uri()
-		.log().body()
-		.log().headers()
+		.spec(SpecUtil.requestSpecWithAuth(FD))
 		.when()
 		.get("/dashboard/count")
 		.then()
-		.log().all()
-		.statusCode(200)
-		.time(lessThan(1500L))
+		.spec(SpecUtil.responseSpec_OK())
 		.body("message", equalTo("Success"))
 		.body("data", notNullValue())
 		.body("data.size()", equalTo(3))
@@ -46,18 +34,11 @@ public class CountAPITest {
 	public void verifyCountAPI_MissingAuthToken() {
 		
 		given()
-		.baseUri(ConfigManager.getProperty("BASE_URI"))
-		.and()
-		.accept(ContentType.JSON)
-		.log().method()
-		.log().uri()
-		.log().body()
-		.log().headers()
+		.spec(SpecUtil.requestSpec())
 		.when()
 		.get("/dashboard/count")
 		.then()
-		.log().all()
-		.statusCode(401);
+		.spec(SpecUtil.responseSpec_TEXT(401));
 	}
 
 }
