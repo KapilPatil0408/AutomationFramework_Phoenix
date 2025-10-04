@@ -5,7 +5,7 @@ import static org.hamcrest.Matchers.*;
 
 import org.testng.annotations.Test;
 
-import com.api.pojo.UserCredentials;
+import com.api.record.model.UserCredentials;
 import com.api.utils.SpecUtil;
 
 import io.restassured.module.jsv.JsonSchemaValidator;

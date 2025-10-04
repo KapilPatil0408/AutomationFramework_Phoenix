@@ -1,4 +1,4 @@
-package com.api.pojo;
+package com.api.record.model;
 
 import java.util.List;
 
