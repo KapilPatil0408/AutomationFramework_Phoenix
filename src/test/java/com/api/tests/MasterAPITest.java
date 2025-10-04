@@ -8,19 +8,19 @@ import static org.hamcrest.Matchers.*;
 
 import org.testng.annotations.Test;
 
-import com.api.utils.SpecUtil;
+import static com.api.utils.SpecUtil.*;
 
 public class MasterAPITest {
 	
-	@Test
+	@Test(description="Verify the Master API response is shown correctly", groups= {"api", "smoke", "regression"})
 	public void masterAPITest() {
 		
 		given()
-		.spec(SpecUtil.requestSpecWithAuth(FD))
+		.spec(requestSpecWithAuth(FD))
 		.when()
 		.post("master")
 		.then()
-		.spec(SpecUtil.responseSpec_OK())
+		.spec(responseSpec_OK())
 		.body("message", equalTo("Success"))
 		.body("data", notNullValue())
 		.body("data", hasKey("mst_oem"))
@@ -34,15 +34,14 @@ public class MasterAPITest {
 		.body(matchesJsonSchemaInClasspath("response-schema/masterAPIResponseSchema.json"));
 	}
 	
-	@Test
+	@Test(description="Verify the Master correct status code for invalid token", groups= {"api", "negative", "smoke", "regression"})
 	public void invalidTokenMasterAPITest() {
-		
 		given()
-		.spec(SpecUtil.requestSpec())
+		.spec(requestSpec())
 		.when()
 		.post("master")
 		.then()
-		.spec(SpecUtil.responseSpec_TEXT(401));
+		.spec(responseSpec_TEXT(401));
 	}
 
 }

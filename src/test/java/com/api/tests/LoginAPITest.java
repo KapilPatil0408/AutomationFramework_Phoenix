@@ -3,30 +3,38 @@ package com.api.tests;
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.api.record.model.UserCredentials;
-import com.api.utils.SpecUtil;
+import static com.api.utils.SpecUtil.*;
 
-import io.restassured.module.jsv.JsonSchemaValidator;
+import static io.restassured.module.jsv.JsonSchemaValidator.*;
 
 public class LoginAPITest {
 	
-	@Test
+	private UserCredentials userCrendentials;
+	
+	@BeforeMethod(description="Create payload for the login API")
+	public void setup() {
+		userCrendentials	= new UserCredentials("iamfd", "password");
+	}
+	
+	@Test(description="Verify if login api working for FD user", groups= {"api", "regression", "smoke"})
 	public void loginTest() {
 		
-		UserCredentials userCrendentials= new UserCredentials("iamfd", "password");
+		
 		
 		given()
-		.spec(SpecUtil.requestSpec(userCrendentials))
+		.spec(requestSpec(userCrendentials))
 		.when()
 		.post("login")
 		.then()
-		.spec(SpecUtil.responseSpec_OK())
+		.spec(responseSpec_OK())
 		.and()
 		.body("message", equalTo("Success"))
 		.and()
-		.body(JsonSchemaValidator.matchesJsonSchemaInClasspath("response-schema/loginResponseSchema.json"));
+		.body(matchesJsonSchemaInClasspath("response-schema/loginResponseSchema.json"));
 
 }
 }
