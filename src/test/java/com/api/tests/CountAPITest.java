@@ -12,7 +12,7 @@ import com.api.utils.SpecUtil;
 public class CountAPITest {
 	
 	
-	@Test
+	@Test(description="Verify the Count API response is shown correctly", groups= {"api", "smoke", "regression"})
 	public void verifyCountAPIResponse() {
 		
 		given()
@@ -30,7 +30,7 @@ public class CountAPITest {
 		.body(matchesJsonSchemaInClasspath("response-schema/countAPIResponseSchema.json"));
 	}
 	
-	@Test
+	@Test(description="Verify the Count API correct status code for invalid token", groups= {"api", "negative", "smoke", "regression"})
 	public void verifyCountAPI_MissingAuthToken() {
 		
 		given()
