@@ -9,11 +9,8 @@ import org.hamcrest.Matchers;
 import org.testng.annotations.Test;
 
 import com.api.constant.Role;
-import com.api.record.model.CreateJobPayload;
-import com.api.record.model.Customer;
-import com.api.record.model.CustomerAddress;
-import com.api.record.model.CustomerProduct;
-import com.api.record.model.Problems;
+import com.api.record.model.*;
+import static  com.api.utils.DateTimeUtil.*;
 import com.api.utils.SpecUtil;
 
 import io.restassured.module.jsv.JsonSchemaValidator;
@@ -27,7 +24,7 @@ public class CreateJobAPITest {
 		
 		Customer customer= new Customer("Kapil", "Patil", "7028582296", "", "kapil9660@gmail.com", "");
 		CustomerAddress customerAddress= new CustomerAddress("K 502", "Galaxy app", "Balaji nagar", "Tarabai park", "Kolhapur", "416112", "Maharashtra", "India");
-		CustomerProduct customerProduct= new CustomerProduct("2025-05-12T18:30:00.000Z", "499863806376052", "499863806376052", "499863806376052", "2025-05-12T18:30:00.000Z", 1, 1);
+		CustomerProduct customerProduct= new CustomerProduct(getTimeWithDays(10), "499863806376054", "499863806376054", "499863806376054", getTimeWithDays(10), 1, 1);
 		Problems problem= new Problems(1, "Battery issue");
 		List<Problems> problemList= new ArrayList<Problems>();
 		problemList.add(problem);
