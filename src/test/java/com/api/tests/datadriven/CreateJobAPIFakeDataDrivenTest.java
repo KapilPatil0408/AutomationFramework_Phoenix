@@ -12,12 +12,12 @@ import com.api.constant.Role;
 import com.api.record.model.CreateJobPayload;
 
 
-public class CreateJobAPIDataDrivenTest {
+public class CreateJobAPIFakeDataDrivenTest {
 	
 	
-	@Test(description="Verify if create job api response is able to create Inwarranty job", groups= {"api", "regression", "datadriven", "csv"},
+	@Test(description="Verify if create job api response is able to create Inwarranty job", groups= {"api", "regression", "datadriven", "faker"},
 				dataProviderClass = com.dataproviders.DataProviderUtils.class,
-				dataProvider ="createJobAPIDataProvider")
+				dataProvider ="createJobAPIFakerDataProvider")
 	public void createJobAPITest(CreateJobPayload createJobPayload) {
 	
 		given()
