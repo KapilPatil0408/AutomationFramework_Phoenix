@@ -1,0 +1,136 @@
+[
+
+
+{
+    "mst_service_location_id": 0,
+    "mst_platform_id": 2,
+    "mst_warrenty_status_id": 1,
+    "mst_oem_id": 2,
+    "customer": {
+        "first_name": "Merle",
+        "last_name": "Wintheiser",
+        "mobile_number": "306-842-9060",
+        "mobile_number_alt": "",
+        "email_id": "Ruben.Towne66@gmail.com",
+        "email_id_alt": ""
+    },
+    "customer_address": {
+        "flat_number": "45",
+        "apartment_name": "nale app",
+        "street_name": "dhsookn raod",
+        "landmark": "gtr coliin ",
+        "area": "nadani",
+        "pincode": "416112",
+        "country": "India",
+        "state": "Maharashtra"
+    },
+    "customer_product": {
+        "dop": "2025-05-12T18:30:00.000Z",
+        "serial_number": "750542362799449",
+        "imei1": "750542362799449",
+        "imei2": "750542362799449",
+        "popurl": "2025-05-12T18:30:00.000Z",
+        "product_id": 3,
+        "mst_model_id": 3
+    },
+    "problems": [
+        {
+            "id": 3,
+            "remark": "batteray issue"
+        },
+        
+        {
+            "id": 2,
+            "remark": "not working"
+        }
+    ]
+},
+
+{
+    "mst_service_location_id": 0,
+    "mst_platform_id": 2,
+    "mst_warrenty_status_id": 1,
+    "mst_oem_id": 2,
+    "customer": {
+        "first_name": "Merle",
+        "last_name": "Wintheiser",
+        "mobile_number": "306-842-9060",
+        "mobile_number_alt": "",
+        "email_id": "Ruben.Towne66@gmail.com",
+        "email_id_alt": ""
+    },
+    "customer_address": {
+        "flat_number": "45",
+        "apartment_name": "nale app",
+        "street_name": "dhsookn raod",
+        "landmark": "gtr coliin ",
+        "area": "nadani",
+        "pincode": "416112",
+        "country": "India",
+        "state": "Maharashtra"
+    },
+    "customer_product": {
+        "dop": "2025-05-12T18:30:00.000Z",
+        "serial_number": "950542362799449",
+        "imei1": "950542362799449",
+        "imei2": "950542362799449",
+        "popurl": "2025-05-12T18:30:00.000Z",
+        "product_id": 3,
+        "mst_model_id": 3
+    },
+    "problems": [
+        {
+            "id": 3,
+            "remark": "batteray issue"
+        },
+        
+        {
+            "id": 2,
+            "remark": "not working"
+        }
+    ]
+},
+
+{
+    "mst_service_location_id": 0,
+    "mst_platform_id": 2,
+    "mst_warrenty_status_id": 1,
+    "mst_oem_id": 2,
+    "customer": {
+        "first_name": "Merle",
+        "last_name": "Wintheiser",
+        "mobile_number": "306-842-9060",
+        "mobile_number_alt": "",
+        "email_id": "Ruben.Towne66@gmail.com",
+        "email_id_alt": ""
+    },
+    "customer_address": {
+        "flat_number": "45",
+        "apartment_name": "nale app",
+        "street_name": "dhsookn raod",
+        "landmark": "gtr coliin ",
+        "area": "nadani",
+        "pincode": "416112",
+        "country": "India",
+        "state": "Maharashtra"
+    },
+    "customer_product": {
+        "dop": "2025-05-12T18:30:00.000Z",
+        "serial_number": "890542362799449",
+        "imei1": "890542362799449",
+        "imei2": "890542362799449",
+        "popurl": "2025-05-12T18:30:00.000Z",
+        "product_id": 3,
+        "mst_model_id": 3
+    },
+    "problems": [
+        {
+            "id": 1,
+            "remark": "batteray issue"
+        }
+    ]
+}
+
+
+
+]
