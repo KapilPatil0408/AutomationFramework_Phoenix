@@ -63,8 +63,8 @@ public class DataProviderUtils {
 	
 	
 	@DataProvider(name = "loginAPIExcelDataProvider", parallel = true)
-	public static Iterator<UserCredentials> loginAPIExcelDataProvider() {
-		return ExcelReaderUtil2.loadTestData();
+	public static Iterator<UserBean> loginAPIExcelDataProvider() {
+		return ExcelReaderUtil2.loadTestData("LoginTestData", UserBean.class);
 	}
 }
 
