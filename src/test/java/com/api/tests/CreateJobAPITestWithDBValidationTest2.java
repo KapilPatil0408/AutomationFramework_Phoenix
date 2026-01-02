@@ -31,9 +31,11 @@ import com.api.response.model.CreateJobResponseModel;
 import com.database.dao.CustomerAddressDao;
 import com.database.dao.CustomerDao;
 import com.database.dao.CustomerProductDao;
+import com.database.dao.MapJobProblemDao;
 import com.database.model.CustomerAddressDBModel;
 import com.database.model.CustomerDBModel;
 import com.database.model.CustomerProductDBModel;
+import com.database.model.MapJobProblemModel;
 
 public class CreateJobAPITestWithDBValidationTest2 {
 	private CreateJobPayload createJobPayload;
@@ -46,8 +48,8 @@ public class CreateJobAPITestWithDBValidationTest2 {
 		customer = new Customer("Kapil", "Patil", "7028582296", "", "kapil9660@gmail.com", "");
 		customerAddress = new CustomerAddress("K 502", "Galaxy app", "Balaji nagar", "Tarabai park",
 				"Kolhapur", "416112", "Maharashtra", "India");
-		customerProduct = new CustomerProduct(getTimeWithDays(10), "499863806376401", "499863806376401",
-				"499863806376401", getTimeWithDays(10), Product.NEXUS_2.getCode(), Model.NEXUS_2_BLUE.getCode());
+		customerProduct = new CustomerProduct(getTimeWithDays(10), "499863806376402", "499863806376402",
+				"499863806376402", getTimeWithDays(10), Product.NEXUS_2.getCode(), Model.NEXUS_2_BLUE.getCode());
 		Problems problem = new Problems(Problem.SMARTPHONE_IS_RUNNING_SLOW.getCode(), "Battery issue");
 		List<Problems> problemList = new ArrayList<Problems>();
 		problemList.add(problem);
@@ -107,6 +109,11 @@ public class CreateJobAPITestWithDBValidationTest2 {
 		Assert.assertEquals(customerProductDBModel.getDop(), customerProduct.dop());
 		Assert.assertEquals(customerProductDBModel.getPopurl(), customerProduct.popurl());
 		Assert.assertEquals(customerProductDBModel.getMst_model_id(), customerProduct.mst_model_id());
+		
+		int tr_job_head_id = createJobResponseModel.getData().getId();
+		MapJobProblemModel jobDataFromDB = MapJobProblemDao.getProblemDetails(tr_job_head_id);
+		Assert.assertEquals(jobDataFromDB.getMst_problem_id(), createJobPayload.problems().get(0).id());
+		Assert.assertEquals(jobDataFromDB.getRemark(), createJobPayload.problems().get(0).remark());
 		
 	}
 

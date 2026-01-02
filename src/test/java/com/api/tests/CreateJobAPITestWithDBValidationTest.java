@@ -30,9 +30,11 @@ import com.api.request.model.Problems;
 import com.database.dao.CustomerAddressDao;
 import com.database.dao.CustomerDao;
 import com.database.dao.CustomerProductDao;
+import com.database.dao.MapJobProblemDao;
 import com.database.model.CustomerAddressDBModel;
 import com.database.model.CustomerDBModel;
 import com.database.model.CustomerProductDBModel;
+import com.database.model.MapJobProblemModel;
 
 import io.restassured.response.Response;
 
@@ -47,8 +49,8 @@ public class CreateJobAPITestWithDBValidationTest {
 		customer = new Customer("Kapil", "Patil", "7028582296", "", "kapil9660@gmail.com", "");
 		customerAddress = new CustomerAddress("K 502", "Galaxy app", "Balaji nagar", "Tarabai park",
 				"Kolhapur", "416112", "Maharashtra", "India");
-		customerProduct = new CustomerProduct(getTimeWithDays(10), "499863806376450", "499863806376450",
-				"499863806376450", getTimeWithDays(10), Product.NEXUS_2.getCode(), Model.NEXUS_2_BLUE.getCode());
+		customerProduct = new CustomerProduct(getTimeWithDays(10), "499863806376500", "499863806376500",
+				"499863806376500", getTimeWithDays(10), Product.NEXUS_2.getCode(), Model.NEXUS_2_BLUE.getCode());
 		Problems problem = new Problems(Problem.SMARTPHONE_IS_RUNNING_SLOW.getCode(), "Battery issue");
 		List<Problems> problemList = new ArrayList<Problems>();
 		problemList.add(problem);
@@ -96,16 +98,22 @@ public class CreateJobAPITestWithDBValidationTest {
 		Assert.assertEquals(customerAddressDBModel.getCountry(), customerAddress.country());
 		Assert.assertEquals(customerAddressDBModel.getPincode(), customerAddress.pincode());
 		
+		
+		int tr_job_head_id = response.then().extract().body().jsonPath().getInt("data.id");
+		MapJobProblemModel jobDataFromDB = MapJobProblemDao.getProblemDetails(tr_job_head_id);
+		Assert.assertEquals(jobDataFromDB.getMst_problem_id(), createJobPayload.problems().get(0).id());
+		Assert.assertEquals(jobDataFromDB.getRemark(), createJobPayload.problems().get(0).remark());
+		
 		int productId = response.then().extract().body().jsonPath().getInt("data.tr_customer_product_id");
-		
 		CustomerProductDBModel customerProductDBModel = CustomerProductDao.getProductInfo(productId);
-		
 		Assert.assertEquals(customerProductDBModel.getImei1(), customerProduct.imei1());
 		Assert.assertEquals(customerProductDBModel.getImei2(), customerProduct.imei2());
 		Assert.assertEquals(customerProductDBModel.getSerial_number(), customerProduct.serial_number());
 		Assert.assertEquals(customerProductDBModel.getDop(), customerProduct.dop());
 		Assert.assertEquals(customerProductDBModel.getPopurl(), customerProduct.popurl());
 		Assert.assertEquals(customerProductDBModel.getMst_model_id(), customerProduct.mst_model_id());
+		
+		
 		
 	}
 
