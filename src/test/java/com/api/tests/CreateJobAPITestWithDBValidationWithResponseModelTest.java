@@ -39,7 +39,7 @@ import com.database.model.CustomerProductDBModel;
 import com.database.model.JobHeadDBModel;
 import com.database.model.MapJobProblemModel;
 
-public class CreateJobAPITestWithDBValidationTest2 {
+public class CreateJobAPITestWithDBValidationWithResponseModelTest {
 	private CreateJobPayload createJobPayload;
 	private Customer customer;
 	private CustomerAddress customerAddress;
