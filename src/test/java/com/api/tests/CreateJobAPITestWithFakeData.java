@@ -11,8 +11,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.api.constant.Role;
-import com.api.record.model.CreateJobPayload;
-import com.api.record.model.Customer;
+import com.api.request.model.CreateJobPayload;
+import com.api.request.model.Customer;
 import com.api.utils.FakerDataGenerator;
 import com.database.dao.CustomerAddressDao;
 import com.database.dao.CustomerDao;

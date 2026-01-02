@@ -1,4 +1,4 @@
-package com.api.record.model;
+package com.api.request.model;
 
 import java.util.List;
 

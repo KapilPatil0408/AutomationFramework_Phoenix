@@ -9,7 +9,7 @@ import org.hamcrest.Matchers;
 import org.testng.annotations.Test;
 
 import com.api.constant.Role;
-import com.api.record.model.CreateJobPayload;
+import com.api.request.model.CreateJobPayload;
 
 
 public class CreateJobAPIFakeDataDrivenTest {

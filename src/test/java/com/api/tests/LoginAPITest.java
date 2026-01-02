@@ -6,7 +6,8 @@ import static org.hamcrest.Matchers.*;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import com.api.record.model.UserCredentials;
+import com.api.request.model.UserCredentials;
+
 import static com.api.utils.SpecUtil.*;
 
 import static io.restassured.module.jsv.JsonSchemaValidator.*;

@@ -6,8 +6,8 @@ import java.util.List;
 
 import org.testng.annotations.DataProvider;
 
-import com.api.record.model.CreateJobPayload;
-import com.api.record.model.UserCredentials;
+import com.api.request.model.CreateJobPayload;
+import com.api.request.model.UserCredentials;
 import com.api.utils.CSVReaderUtil;
 import com.api.utils.CreateJobBeanMapper;
 import com.api.utils.ExcelReaderUtil;

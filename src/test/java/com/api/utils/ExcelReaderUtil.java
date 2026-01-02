@@ -8,7 +8,7 @@ import java.util.List;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import com.api.record.model.UserCredentials;
+import com.api.request.model.UserCredentials;
 import com.dataproviders.api.bean.UserBean;
 import com.poiji.bind.Poiji;
 

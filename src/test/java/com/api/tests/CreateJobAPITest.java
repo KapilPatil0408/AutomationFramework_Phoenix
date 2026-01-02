@@ -12,7 +12,7 @@ import org.hamcrest.Matchers;
 import org.testng.annotations.*;
 
 import com.api.constant.*;
-import com.api.record.model.*;
+import com.api.request.model.*;
 
 
 public class CreateJobAPITest {
