@@ -30,10 +30,12 @@ import com.api.request.model.Problems;
 import com.database.dao.CustomerAddressDao;
 import com.database.dao.CustomerDao;
 import com.database.dao.CustomerProductDao;
+import com.database.dao.JobHeadDao;
 import com.database.dao.MapJobProblemDao;
 import com.database.model.CustomerAddressDBModel;
 import com.database.model.CustomerDBModel;
 import com.database.model.CustomerProductDBModel;
+import com.database.model.JobHeadDBModel;
 import com.database.model.MapJobProblemModel;
 
 import io.restassured.response.Response;
@@ -49,8 +51,8 @@ public class CreateJobAPITestWithDBValidationTest {
 		customer = new Customer("Kapil", "Patil", "7028582296", "", "kapil9660@gmail.com", "");
 		customerAddress = new CustomerAddress("K 502", "Galaxy app", "Balaji nagar", "Tarabai park",
 				"Kolhapur", "416112", "Maharashtra", "India");
-		customerProduct = new CustomerProduct(getTimeWithDays(10), "499863806376500", "499863806376500",
-				"499863806376500", getTimeWithDays(10), Product.NEXUS_2.getCode(), Model.NEXUS_2_BLUE.getCode());
+		customerProduct = new CustomerProduct(getTimeWithDays(10), "499863806376545", "499863806376545",
+				"499863806376545", getTimeWithDays(10), Product.NEXUS_2.getCode(), Model.NEXUS_2_BLUE.getCode());
 		Problems problem = new Problems(Problem.SMARTPHONE_IS_RUNNING_SLOW.getCode(), "Battery issue");
 		List<Problems> problemList = new ArrayList<Problems>();
 		problemList.add(problem);
@@ -103,6 +105,12 @@ public class CreateJobAPITestWithDBValidationTest {
 		MapJobProblemModel jobDataFromDB = MapJobProblemDao.getProblemDetails(tr_job_head_id);
 		Assert.assertEquals(jobDataFromDB.getMst_problem_id(), createJobPayload.problems().get(0).id());
 		Assert.assertEquals(jobDataFromDB.getRemark(), createJobPayload.problems().get(0).remark());
+		
+		JobHeadDBModel jobHeadDataFromDB = JobHeadDao.getDataFromJobHead(customerId);
+		Assert.assertEquals(jobHeadDataFromDB.getMst_oem_id(), createJobPayload.mst_oem_id());
+		Assert.assertEquals(jobHeadDataFromDB.getMst_platform_id(), createJobPayload.mst_platform_id());
+		Assert.assertEquals(jobHeadDataFromDB.getMst_service_location_id(), createJobPayload.mst_service_location_id());
+		Assert.assertEquals(jobHeadDataFromDB.getMst_warrenty_status_id(), createJobPayload.mst_warrenty_status_id());
 		
 		int productId = response.then().extract().body().jsonPath().getInt("data.tr_customer_product_id");
 		CustomerProductDBModel customerProductDBModel = CustomerProductDao.getProductInfo(productId);
