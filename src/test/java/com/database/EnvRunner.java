@@ -4,6 +4,7 @@ import io.github.cdimascio.dotenv.Dotenv;
 
 public class EnvRunner {
 
+	
 	public static void main(String[] args) {
 		// TODO Auto-g
 
@@ -14,6 +15,8 @@ public class EnvRunner {
 		System.out.println(data);
 		System.out.println(data1);
 		System.out.println(data2);
+		
+		
 	}
 
 }
